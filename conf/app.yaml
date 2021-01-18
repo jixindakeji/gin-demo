@@ -1,0 +1,27 @@
+#debug or release
+run-mode: debug
+
+app:
+  page-size: 10
+  jwt-token-name: 'Auth-Token'
+  jwt-secret: '23311111sdf@wsefsdf'
+  admin-secret: '111111'
+  log-level: 'debug'
+  log-path : './'
+  log-type : 'file'
+  log-name : 'access.log'
+
+server:
+  port : 8080
+  read-timeout : 60
+  write-timeout : 60
+
+database:
+  type : mysql
+  user : root
+  password : 123456
+  host : mysql.cfg.com:3306
+  name : general
+  table-prefix : general_
+
+
