@@ -6,10 +6,6 @@ app:
   jwt-token-name: 'Auth-Token'
   jwt-secret: '23311111sdf@wsefsdf'
   admin-secret: '111111'
-  log-level: 'debug'
-  log-path : './'
-  log-type : 'file'
-  log-name : 'access.log'
 
 server:
   port : 8080

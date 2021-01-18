@@ -14,10 +14,6 @@ type App struct {
 	JwtTokenName string `mapstructure:"jwt-token-name" json:"JwtTokenName" yaml:"jwt-token-name"`
 	JwtSecret    string `mapstructure:"jwt-secret" json:"JwtSecret" yaml:"jwt-secret"`
 	AdminSecret  string `mapstructure:"admin-secret" json:"-" yaml:"jwt-secret"`
-	LogLevel     string `mapstructure:"log-level" json:"LogLevel" yaml:"log-level"`
-	LogType      string `mapstructure:"log-type" json:"LogType" yaml:"log-type"`
-	LogPath      string `mapstructure:"log-path" json:"LogPath" yaml:"log-path"`
-	LogName      string `mapstructure:"log-name" json:"LogName" yaml:"log-name"`
 }
 type Server struct {
 	Port         int           `mapstructure:"port" json:"port" yaml:"port"`
