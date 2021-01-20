@@ -3,6 +3,7 @@ package models
 import (
 	"errors"
 	"github.com/jinzhu/gorm"
+	"sort"
 )
 
 type SysMenu struct {
@@ -55,6 +56,7 @@ func GetSysMenuChildren(id uint) ([]*SysMenu, error) {
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return nil, err
 	}
+	sort.Sort(SysMenus(sysMenus))
 	for _, v := range sysMenus {
 		items, err := GetSysMenuChildren(v.ID)
 		if err != nil && err != gorm.ErrRecordNotFound {
@@ -62,6 +64,7 @@ func GetSysMenuChildren(id uint) ([]*SysMenu, error) {
 		}
 		for _, v1 := range items {
 			v.Children = append(v.Children, v1)
+			sort.Sort(SysMenus(v.Children))
 		}
 	}
 	return sysMenus, nil
@@ -102,4 +105,18 @@ func DeleteSysMenu(id uint) error {
 		return err
 	}
 	return nil
+}
+
+type SysMenus []*SysMenu
+
+func (m SysMenus) Len() int {
+	return len(m)
+}
+
+func (m SysMenus) Swap(i, j int) {
+	m[i], m[j] = m[j], m[i]
+}
+
+func (m SysMenus) Less(i, j int) bool {
+	return m[i].Sort < m[j].Sort
 }
